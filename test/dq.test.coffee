@@ -87,4 +87,11 @@ describe 'dq', ->
                     T res is undefined
                     done()
 
+  describe '- quit()', ->
+    it 'should set the hasQuit flag', (done) ->
+      dq.create name: 'blah', (err, q) ->
+        F q.hasQuit
+        q.quit ->
+          T q.hasQuit
+          done()
        

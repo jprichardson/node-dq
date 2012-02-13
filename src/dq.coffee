@@ -3,10 +3,9 @@ util = require('util')
 
 PREFIX = 'dq'
 
-puts = console.log
-
 class Queue
   redisClient: null
+  hasQuit: false
   key: ''
 
   constructor: (@name, @port, @host) ->
@@ -16,12 +15,9 @@ class Queue
   count: (callback) ->
     @redisClient.zcard @key, callback
 
-  enq: (val, priority, callback) -> 
-    if typeof priority is 'function' #if called without priority
-      callback = priority 
-      priority = -Infinity
-
-    @redisClient.zadd @key, priority, val, callback
+  delete: (callback) ->
+    @redisClient.del @key, (err) =>
+      @redisClient.quit callback
 
   deq: (callback) ->
     @redisClient.multi().zrange(@key, 0, 0).zremrangebyrank(@key, 0, 0).exec (err,res) ->
@@ -32,9 +28,16 @@ class Queue
         else
           callback(new Error('Invalid Redis response.'), null)
 
-  delete: (callback) ->
-    @redisClient.del @key, (err) =>
-      @redisClient.quit callback
+  enq: (val, priority, callback) -> 
+    if typeof priority is 'function' #if called without priority
+      callback = priority 
+      priority = -Infinity
+
+    @redisClient.zadd @key, priority, val, callback
+
+  quit: (callback) ->
+    @hasQuit = true
+    @redisClient.quit callback
 
   @create: (params={}, callback) ->
     name = params.name 
