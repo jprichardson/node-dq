@@ -1,3 +1,2 @@
 node_modules/
-config/logmeup.json
-config/proxy.conf.coffee
+npm-debug.log

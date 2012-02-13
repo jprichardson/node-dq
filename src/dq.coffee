@@ -29,9 +29,12 @@ class Queue
           callback(new Error('Invalid Redis response.'), null)
 
   enq: (val, priority, callback) -> 
-    if typeof priority is 'function' #if called without priority
-      callback = priority 
-      priority = -Infinity
+    switch arguments.length
+      when 1 then priority = -Infinity
+      when 2
+        if typeof priority is 'function' #if called without priority
+          callback = priority 
+          priority = -Infinity
 
     @redisClient.zadd @key, priority, val, callback
 

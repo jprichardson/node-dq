@@ -44,6 +44,23 @@ describe 'dq', ->
             T res is 1
             done()
                
+    it 'should enqueue with only the value parameter', (done) ->
+      Q.enq('someval')
+      Q.enq('anotherval')
+      setTimeout(->
+        Q.count (err,res) ->
+          T res is 2
+          done()
+      , 150)
+
+    it 'should enqueue with only the value and priority parameters', (done) ->
+      Q.enq('z', 20)
+      Q.enq('a', 1)
+      setTimeout(->
+        Q.count (err, res) ->
+          T res is 2
+          done()
+      , 150)
 
   describe '- count()', ->
     it 'should count the items in the queue', (done) ->
