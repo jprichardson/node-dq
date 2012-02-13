@@ -10,7 +10,7 @@ describe 'dq', ->
 
   beforeEach (done) ->
     dq.delete name: TESTQ_NAME, (err) ->
-      dq.create TESTQ_NAME, (err, q) ->
+      dq.create name: TESTQ_NAME, (err, q) ->
         Q = q
         done()
 
@@ -20,6 +20,7 @@ describe 'dq', ->
         T q.name is 'someQ'
         T q.host is '127.0.0.1'
         T q.port is 6379
+        T q.key is 'dq:someQ'
         done()
 
     it 'should create a Queue with input params', (done) ->

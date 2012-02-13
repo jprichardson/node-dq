@@ -4,13 +4,13 @@ util = require('util')
 PREFIX = 'dq'
 
 class Queue
-  redisClient: null
+  #redisClient: null
   hasQuit: false
-  key: ''
+  #key: ''
 
   constructor: (@name, @port, @host) ->
     @redisClient = redis.createClient(@port, @host)
-    key = PREFIX + ':' + @name
+    @key = PREFIX + ':' + @name
 
   count: (callback) ->
     @redisClient.zcard @key, callback

@@ -1,3 +1,6 @@
+### 0.0.4 / 2012-02-13
+* Fixed dq key bug.
+
 ### 0.0.3 / 2012-02-12
 * enq() doesnt need a callback now, can be called with value and priority
 
