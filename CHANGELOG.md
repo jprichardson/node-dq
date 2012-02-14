@@ -1,3 +1,6 @@
+### 0.0.5 / 2012-02-13
+* Added Redis auth support.
+
 ### 0.0.4 / 2012-02-13
 * Fixed dq key bug.
 

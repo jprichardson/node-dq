@@ -4,11 +4,9 @@ util = require('util')
 PREFIX = 'dq'
 
 class Queue
-  #redisClient: null
   hasQuit: false
-  #key: ''
 
-  constructor: (@name, @port, @host) ->
+  constructor: (@name, @port, @host, @password) ->
     @redisClient = redis.createClient(@port, @host)
     @key = PREFIX + ':' + @name
 
@@ -46,11 +44,17 @@ class Queue
     name = params.name 
     port = params.port or= 6379
     host = params.host or= '127.0.0.1'
+    password = params.password
+
     error = null
     error = new Error('Must pass name to input.') unless name?
 
-    q = new Queue(name, port, host)
-    callback(error, q)
+    q = new Queue(name, port, host, password)
+    if password?
+      q.redisClient.auth password, ->
+        callback(error, q)
+    else
+      callback(error, q)
 
   @delete: (params={}, callback) ->
     Queue.create params, (err,q) ->
