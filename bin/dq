@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+var dq = require('../lib/dq.js');
+var byline = require('byline');
+var program = require('commander');
+var fs = require('fs');
+var path = require('path');
+
+if (typeof fs.existsSync === 'undefined')
+  fs.existsSync = path.existsSync; //Node v0.8
+
+
+program
+  .version(require('../package.json').version)
+  .option('-f, --file [inputFile]', 'specify the input file otherwise the default is STDIN')
+  .option('-n, --name [queueName]', 'specify the name of the queue')
+  .option('-s, --shuffle', 'insert in random order')
+  .parse(process.argv);
+
+if (process.argv.length < 4) {
+  console.log('Invalid number of arguments. Must at least pass the queue name.');
+} else {
+  var count = 0;
+
+  var stream = null;
+  if (program.file && program.file.length > 0) {
+    if (!fs.existsSync(program.file)) { console.log("%s does not exist.", program.file); process.exit(1); };
+    stream = fs.createReadStream(program.file);
+  } else {
+    stream = process.stdin;
+  }
+
+  stream.on('end', function(){
+    process.nextTick(function(){
+      process.exit(0);
+    });
+  });
+
+  dq.create({name: program.name}, function(err, q){
+    var lineStream = byline(stream);
+    lineStream.on('data', function(line){
+      if (program.shuffle) {
+        q.enq(line, Math.random());
+      } else {
+        q.enq(line, count);
+      }
+      count += 1;
+    });
+  
+    stream.resume();
+  });
+}
+

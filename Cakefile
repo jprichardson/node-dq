@@ -26,7 +26,8 @@ task 'test', 'test project', (options) ->
     coffee.stdout.on 'data', (data) ->
       d = data.toString()
       if d.indexOf('compiled') > 0
-        invoke 'test'
+        #invoke 'test'
+        do (->)
       else
         growl(d, title: 'Error', image: './resources/error.png')
         
