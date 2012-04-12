@@ -10,14 +10,18 @@ if (typeof fs.existsSync === 'undefined')
   fs.existsSync = path.existsSync; //Node v0.8
 
 
+
 program
   .version(require('../package.json').version)
-  .option('-f, --file [inputFile]', 'specify the input file otherwise the default is STDIN')
-  .option('-n, --name [queueName]', 'specify the name of the queue')
+  .option('-f, --file [inputFile]', 'input file otherwise the default is STDIN')
+  .option('-h, --host [host]', 'host of redis server, the default is localhost')
+  .option('-a, --auth [password]', 'password of redis server')
+  .option('-p, --port [number]', 'port of redis server, the default is 6379')
+  .option('-q, --queue [queueName]', 'name of the queue')
   .option('-s, --shuffle', 'insert in random order')
   .parse(process.argv);
 
-if (process.argv.length < 4) {
+if (typeof program.queue === 'undefined') {
   console.log('Invalid number of arguments. Must at least pass the queue name.');
 } else {
   var count = 0;
@@ -30,24 +34,32 @@ if (process.argv.length < 4) {
     stream = process.stdin;
   }
 
-  stream.on('end', function(){
-    process.nextTick(function(){
-      process.exit(0);
-    });
-  });
+  program.name = program.queue;
+  program.password = program.auth;
+  dq.create(program, function(err, q){
+    if (err != null) {
+      console.log('Error: ' + err.message);
+    } else {
+      stream.on('end', function(){
+        process.nextTick(function(){
+          q.quit(function(){
+            process.exit(0);
+          });
+        });
+      });
 
-  dq.create({name: program.name}, function(err, q){
-    var lineStream = byline(stream);
-    lineStream.on('data', function(line){
-      if (program.shuffle) {
-        q.enq(line, Math.random());
-      } else {
-        q.enq(line, count);
-      }
-      count += 1;
-    });
-  
-    stream.resume();
+      var lineStream = byline(stream);
+      lineStream.on('data', function(line){
+        if (program.shuffle) {
+          q.enq(line, Math.random());
+        } else {
+          q.enq(line, count);
+        }
+        count += 1;
+      });
+    
+      stream.resume();
+    }
   });
 }
 

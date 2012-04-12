@@ -2,7 +2,7 @@
   "author": "JP Richardson <jprichardson@gmail.com> (http://gitpilot.com)",
   "name": "dq",
   "description": "A stupidly simple distributed priority data queue built on Redis.",
-  "version": "0.1.0",
+  "version": "0.1.1g",
   "homepage": "http://github.com/jprichardson/node-dq",
   "repository": {
     "type": "git",

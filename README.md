@@ -29,15 +29,19 @@ Usage
 ### Command Line
 
 `
-Usage: dq [options]
+  Usage: dq [options]
 
   Options:
 
-    -h, --help              output usage information
-    -V, --version           output the version number
-    -f, --file [inputFile]  specify the input file otherwise the default is STDIN
-    -n, --name [queueName]  specify the name of the queue
-    -s, --shuffle           insert in random order
+    -h, --help                  output usage information
+    -V, --version               output the version number
+    -f, --file [inputFile]      input file otherwise the default is STDIN
+    -h, --host [host]           host of redis server, the default is localhost
+    -a, --auth [password]       password of redis server
+    -p, --port [number]         port of redis server, the default is 6379
+    -n, --name [queueName]      name of the queue
+    -s, --shuffle               insert in random order
+
 `
 
 **Examples:**

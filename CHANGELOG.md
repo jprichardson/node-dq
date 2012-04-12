@@ -1,3 +1,6 @@
+### 0.1.1 /2012-04-11
+* Added `dq` binary to import files into the queues
+
 ### 0.0.5 / 2012-02-13
 * Added Redis auth support.
 
