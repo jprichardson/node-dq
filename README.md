@@ -42,7 +42,7 @@ dq.create({name: 'mydata'}, function(err, q) {
       -h, --host [host]           host of redis server, the default is localhost
       -a, --auth [password]       password of redis server
       -p, --port [number]         port of redis server, the default is 6379
-      -n, --name [queueName]      name of the queue
+      -q, --queue [queueName]      name of the queue
       -s, --shuffle               insert in random order
 
 
