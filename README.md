@@ -70,7 +70,6 @@ or..
       -a, --auth [password]       password of redis server
       -p, --port [number]         port of redis server, the default is 6379
       -q, --queue [queueName]     name of the queue
-      -s, --shuffle               insert in random order
 
 
 
