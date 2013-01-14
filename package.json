@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "byline": "2.0.x",
-    "commander": "0.6.0",
+    "commander": "1.1.x",
     "redis": "~0.8.2"
   },
   "devDependencies": {
@@ -22,6 +22,7 @@
     "testutil": "0.0.3"
   },
   "bin": {
-    "dq": "./bin/dq"
+    "dq": "./bin/dq",
+    "dq-transfer": "./bin/dq-transfer"
   }
 }
