@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+var dq = require('../lib/dq.js')
+  , program = require('commander')
+  , fs = require('fs')
+  , path = require('path');
+
+if (typeof fs.existsSync === 'undefined') fs.existsSync = path.existsSync; //Node v0.8
+
+program
+  .version(require('../package.json').version)
+  .option('-f, --file [outputFile]', 'output file otherwise the default is STDOUT')
+  .option('-h, --host [host]', 'host of redis server, the default is localhost')
+  .option('-a, --auth [password]', 'password of redis server')
+  .option('-p, --port [number]', 'port of redis server, the default is 6379')
+  .option('-q, --queue [queueName]', 'name of the queue')
+  .parse(process.argv);
+
+if (!program.queue) {
+  console.error('Invalid number of arguments. Must at least pass the queue name.');
+} else {
+  var count = 0
+    , stream = null;
+  
+  if (program.file && program.file.length > 0) {
+    if (!fs.existsSync(program.file)) { console.error("%s does not exist.", program.file); process.exit(1); };
+    stream = fs.createWriteStream(program.file);
+  } else {
+    stream = process.stdout;
+  }
+
+  program.name = program.queue;
+  program.password = program.auth;
+  dq.create(program, function(err, q){
+    if (err) return console.error('Error: ' + err.message)
+    
+    function again() {
+      q.deq(function(err, item) {
+        if (err) process.exit(1)
+        if (item === null || typeof item === 'undefined') process.exit(0)
+        stream.write(item)
+        stream.write('\n')
+        again()
+      })
+    }
+    again()
+  })
+}

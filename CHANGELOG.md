@@ -2,6 +2,8 @@
 ------------------
 * Removed CoffeeScript
 * Added method 'createFromRedisClient'
+* Renamed `dq` to `dq-import`. 
+* Created `dq-export`.
 
 0.1.1 /2012-04-11
 -------------------

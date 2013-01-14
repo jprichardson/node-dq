@@ -18,11 +18,11 @@
     "redis": "~0.8.2"
   },
   "devDependencies": {
-    "mocha": "0.12.x",
-    "testutil": "0.0.3"
+    "mocha": "*",
+    "testutil": "0.3.0"
   },
   "bin": {
-    "dq": "./bin/dq",
-    "dq-transfer": "./bin/dq-transfer"
+    "dq-import": "./bin/dq-import",
+    "dq-export": "./bin/dq-export"
   }
 }
