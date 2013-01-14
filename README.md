@@ -1,7 +1,7 @@
 Node.js - dq
 ============
 
-dq is a stupidly simple data queue built on Redis. It is not a messaging queue or a job queue. If you want a job queue, you should checkout [Kue][kue].
+dq is a stupidly simple data queue built on Redis. It is not a messaging queue or a job queue. If you want a job queue, you should checkout [Kue](http://learnboost.github.com/kue/).
 
 
 
@@ -29,10 +29,10 @@ dq.create({name: 'mydata'}, function(err, q) {
 (More to come later.)
 
 
-### Command Line
+### dq-import
 
 
-    Usage: dq [options]
+    Usage: dq-import [options]
 
     Options:
 
@@ -42,20 +42,45 @@ dq.create({name: 'mydata'}, function(err, q) {
       -h, --host [host]           host of redis server, the default is localhost
       -a, --auth [password]       password of redis server
       -p, --port [number]         port of redis server, the default is 6379
-      -q, --queue [queueName]      name of the queue
+      -q, --queue [queueName]     name of the queue
       -s, --shuffle               insert in random order
 
 
 
 **Examples:**
 
-    $ cat my_data_set.txt | dq --name mydataset
+    $ cat my_data_set.txt | dq-import --queue mydataset
 
 or..
 
-    $ dq --name mydataset --file my_data_set.txt
+    $ dq-import --queue mydataset --file my_data_set.txt
 
 
+### dq-export
+
+
+    Usage: dq-export [options]
+
+    Options:
+
+      -h, --help                  output usage information
+      -V, --version               output the version number
+      -f, --file [outputFile]     output file otherwise the default is STDOUT
+      -h, --host [host]           host of redis server, the default is localhost
+      -a, --auth [password]       password of redis server
+      -p, --port [number]         port of redis server, the default is 6379
+      -q, --queue [queueName]     name of the queue
+      -s, --shuffle               insert in random order
+
+
+
+**Examples:**
+
+    $ dq-export --queue mydataset > my_data_set.txt
+
+or..
+
+    $ dq-export --queue mydataset --file my_data_set.txt
 
 
 ## License
