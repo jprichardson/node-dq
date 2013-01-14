@@ -1,8 +1,8 @@
 {
-  "author": "JP Richardson <jprichardson@gmail.com> (http://gitpilot.com)",
+  "author": "JP Richardson <jprichardson@gmail.com>",
   "name": "dq",
   "description": "A stupidly simple distributed priority data queue built on Redis.",
-  "version": "0.1.1g",
+  "version": "0.2.0",
   "homepage": "http://github.com/jprichardson/node-dq",
   "repository": {
     "type": "git",
@@ -10,24 +10,18 @@
   },
   "main": "lib/dq.js",
   "scripts": {
-    "test": "cake test"
-  },
-  "engines": {
-    "node": "0.6.x"
+    "test": "mocha"
   },
   "dependencies": {
-    "redis": "0.7.x",
-    "hiredis": "0.1.x",
     "byline": "2.0.x",
-    "commander": "0.6.0"
+    "commander": "0.6.0",
+    "redis": "~0.8.2"
   },
   "devDependencies": {
-    "coffee-script": "1.2.x",
     "mocha": "0.12.x",
-    "testutil": "0.0.3",
-    "growl": "1.5.x"
+    "testutil": "0.0.3"
   },
-  "bin":{
+  "bin": {
     "dq": "./bin/dq"
   }
 }

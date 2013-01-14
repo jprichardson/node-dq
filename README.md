@@ -17,32 +17,35 @@ Usage
 
 ### Programatically
 
-    dq = require('dq')
+```js
+var dq = require('dq')
 
-    dq.create name: 'mydata', (err, q) ->
-      q.enq('some data')
-      q.enq('smore data... hehehe')
+dq.create({name: 'mydata'}, function(err, q) {
+  q.enq('some data')
+  q.enq('smore data... hehehe')
+})
+```
 
 (More to come later.)
 
 
 ### Command Line
 
-`
-  Usage: dq [options]
 
-  Options:
+    Usage: dq [options]
 
-    -h, --help                  output usage information
-    -V, --version               output the version number
-    -f, --file [inputFile]      input file otherwise the default is STDIN
-    -h, --host [host]           host of redis server, the default is localhost
-    -a, --auth [password]       password of redis server
-    -p, --port [number]         port of redis server, the default is 6379
-    -n, --name [queueName]      name of the queue
-    -s, --shuffle               insert in random order
+    Options:
 
-`
+      -h, --help                  output usage information
+      -V, --version               output the version number
+      -f, --file [inputFile]      input file otherwise the default is STDIN
+      -h, --host [host]           host of redis server, the default is localhost
+      -a, --auth [password]       password of redis server
+      -p, --port [number]         port of redis server, the default is 6379
+      -n, --name [queueName]      name of the queue
+      -s, --shuffle               insert in random order
+
+
 
 **Examples:**
 
@@ -53,11 +56,6 @@ or..
     $ dq --name mydataset --file my_data_set.txt
 
 
-TODO
-----
-
-1. fluent interface
-2. REST API
 
 
 ## License
