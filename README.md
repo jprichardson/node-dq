@@ -64,4 +64,5 @@ TODO
 
 Licensed under MIT. See `LICENSE` for more details.
 
-Copyright (c) 2012 JP Richardson
+Copyright (c) 2012-2013 JP Richardson
+
