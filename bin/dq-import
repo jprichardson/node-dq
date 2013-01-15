@@ -38,18 +38,16 @@ if (!program.queue) {
     
     stream.on('end', function(){
       process.nextTick(function(){
-        q.quit(function(){
-          process.exit(0);
-        });
+        q.quit()
       });
     });
 
     var lineStream = byline(stream);
     lineStream.on('data', function(line){
       if (program.shuffle) {
-        q.enq(line, Math.random());
+        q.enq(line, Math.random())
       } else {
-        q.enq(line, count);
+        q.enq(line, count)
       }
       count += 1;
     });

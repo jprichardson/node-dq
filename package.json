@@ -2,7 +2,7 @@
   "author": "JP Richardson <jprichardson@gmail.com>",
   "name": "dq",
   "description": "A stupidly simple distributed priority data queue built on Redis.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "http://github.com/jprichardson/node-dq",
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
   "dependencies": {
     "byline": "2.0.x",
     "commander": "1.1.x",
-    "redis": "~0.8.2"
+    "redis": "~0.8.2",
+    "hiredis": "~0.1.14"
   },
   "devDependencies": {
     "mocha": "*",
