@@ -1,3 +1,7 @@
+0.3.1 / 2013-09-12
+------------------
+* don't call `auth` if no password is set
+
 0.3.0 / 2013-09-12
 ------------------
 * refactored dq-import, removed `-f` flag, fixed bug with `byline` module, node v0.10 only now
