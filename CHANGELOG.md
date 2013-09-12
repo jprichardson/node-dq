@@ -1,3 +1,8 @@
+0.3.0 / 2013-09-12
+------------------
+* refactored dq-import, removed `-f` flag, fixed bug with `byline` module, node v0.10 only now
+* refactored dq-export, removed `-f` flag
+
 0.2.1 / 2013-01-15
 ------------------
 * Remote bug.
