@@ -36,7 +36,9 @@ dq.create(program, function(err, q){
   });
 
   lineStream.on('end', function(){
-    setImmediate(q.quit)
+    setImmediate(function() {
+      q.quit()
+    })
   })
 })
 
