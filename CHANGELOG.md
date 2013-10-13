@@ -1,3 +1,8 @@
+0.4.0 / 2013-10-13
+------------------
+* aliased `destroy()` to `delete()`
+* added option to not quite on `destroy()`
+
 0.3.1 / 2013-09-12
 ------------------
 * don't call `auth` if no password is set
