@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 var dq = require('../lib/dq.js')
-  , byline = require('byline')
-  , program = require('commander')
-  , fs = require('fs')
-  , path = require('path');
+var byline = require('byline')
+var program = require('commander')
+var fs = require('fs')
+var path = require('path')
 
 program
   .version(require('../package.json').version)
@@ -13,15 +13,15 @@ program
   .option('-p, --port [number]', 'port of redis server, the default is 6379')
   .option('-q, --queue <queueName>', 'name of the queue')
   .option('-s, --shuffle', 'insert in random order')
-  .parse(process.argv);
+  .parse(process.argv)
 
 var count = 0
 
-program.name = program.queue;
-program.password = program.auth;
+program.name = program.queue
+program.password = program.auth
 dq.create(program, function(err, q){
   if (err) {
-    console.error('Error: ' + err.message);
+    console.error('Error: ' + err.message)
     process.exit(1)
   }
 
@@ -32,8 +32,8 @@ dq.create(program, function(err, q){
     } else {
       q.enq(line, count)
     }
-    count += 1;
-  });
+    count += 1
+  })
 
   lineStream.on('end', function(){
     setImmediate(function() {
