@@ -21,7 +21,7 @@
   "devDependencies": {
     "mocha": "*",
     "standard": "^3.2.0",
-    "testutil": "~0.6.0"
+    "terst": "^0.3.0"
   },
   "bin": {
     "dq-import": "./bin/dq-import",

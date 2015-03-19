@@ -1,5 +1,5 @@
 var dq = require('../lib/dq.js')
-require('testutil')
+require('terst')
 
 /* global beforeEach, describe, F, it, T */
 /* eslint-disable no-spaced-func */
