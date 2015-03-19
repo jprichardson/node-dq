@@ -19,6 +19,7 @@
     "redis": "^0.12.1"
   },
   "devDependencies": {
+    "async": "^0.9.0",
     "mocha": "*",
     "standard": "^3.2.0",
     "terst": "^0.3.0"

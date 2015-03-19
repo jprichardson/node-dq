@@ -1,3 +1,5 @@
+var assert = require('assert')
+var async = require('async')
 var dq = require('../lib/dq.js')
 require('terst')
 
@@ -146,6 +148,36 @@ describe('dq', function () {
                 })
               })
             })
+          })
+        })
+      })
+    })
+  })
+
+  describe('- peak()', function () {
+    it('should peak but not remove', function (done) {
+      var data = ['a', 'b', 'c']
+      async.forEach(data, Q.enq.bind(Q), function (err) {
+        F (err)
+
+        Q.peak(0, 3, function (err, res) {
+          F (err)
+          assert.deepEqual(data, res)
+          done()
+        })
+      })
+    })
+
+    describe('> when start + length is greater than count', function () {
+      it('should still return until end', function (done) {
+        var data = ['a', 'b', 'c']
+        async.forEach(data, Q.enq.bind(Q), function (err) {
+          F (err)
+
+          Q.peak(0, 10, function (err, res) {
+            F (err)
+            assert.deepEqual(data, res)
+            done()
           })
         })
       })
