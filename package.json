@@ -15,8 +15,8 @@
   "dependencies": {
     "byline": "~3.1.2",
     "commander": "1.1.x",
-    "redis": "~0.8.2",
-    "hiredis": "~0.1.14"
+    "hiredis": "^0.2.0",
+    "redis": "^0.12.1"
   },
   "devDependencies": {
     "mocha": "*",
