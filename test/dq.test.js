@@ -1,6 +1,6 @@
 var assert = require('assert')
 var async = require('async')
-var dq = require('../lib/dq.js')
+var dq = require('../')
 require('terst')
 
 /* global beforeEach, describe, F, it, T */
