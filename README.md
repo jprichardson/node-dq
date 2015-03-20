@@ -1,8 +1,7 @@
 Node.js - dq
 ============
 
-dq is a stupidly simple data queue built on Redis. It is not a messaging queue or a job queue. If you want a job queue, you should checkout [Kue](http://learnboost.github.com/kue/).
-
+dq is a simple priority queue built on Redis.
 
 
 Install
