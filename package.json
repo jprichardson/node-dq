@@ -20,8 +20,6 @@
     "test": "standard && mocha"
   },
   "dependencies": {
-    "byline": "~3.1.2",
-    "commander": "1.1.x",
     "hiredis": "^0.2.0",
     "redis": "^0.12.1"
   },
