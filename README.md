@@ -48,62 +48,6 @@ dq.create({name: 'somedata'}, function (err, q) {
 ```
 
 
-
-
-
-### dq-import
-
-
-    Usage: dq-import [options]
-
-    Options:
-
-      -h, --help                  output usage information
-      -V, --version               output the version number
-      -f, --file [inputFile]      input file otherwise the default is STDIN
-      -h, --host [host]           host of redis server, the default is localhost
-      -a, --auth [password]       password of redis server
-      -p, --port [number]         port of redis server, the default is 6379
-      -q, --queue [queueName]     name of the queue
-      -s, --shuffle               insert in random order
-
-
-
-**Examples:**
-
-    $ cat my_data_set.txt | dq-import --queue mydataset
-
-or..
-
-    $ dq-import --queue mydataset --file my_data_set.txt
-
-
-### dq-export
-
-
-    Usage: dq-export [options]
-
-    Options:
-
-      -h, --help                  output usage information
-      -V, --version               output the version number
-      -f, --file [outputFile]     output file otherwise the default is STDOUT
-      -h, --host [host]           host of redis server, the default is localhost
-      -a, --auth [password]       password of redis server
-      -p, --port [number]         port of redis server, the default is 6379
-      -q, --queue [queueName]     name of the queue
-
-
-
-**Examples:**
-
-    $ dq-export --queue mydataset > my_data_set.txt
-
-or..
-
-    $ dq-export --queue mydataset --file my_data_set.txt
-
-
 ## License
 
 Licensed under MIT. See `LICENSE` for more details.
