@@ -7,26 +7,37 @@ dq is a simple priority queue built on Redis.
 Install
 -------
 
-    npm install dq
+    npm install --save dq
 
 
 
 Usage
 -----
 
-### Example
+### connect(config, [callback])
+
+alias: `create()`
+
+1. `config`: Can take any of the following:
+  a. `name` (required)
+  b. `port`, defaults to `6379`
+  c. `host`, defaults '127.0.0.1'
+  d. `password`
+2. `callback` optional, has signature `(err, q)`
+
+**example:**
 
 ```js
-var dq = require('dq')
+var q = dq.connect({name: 'tasks'})
 
-dq.create({name: 'mydata'}, function (err, q) {
-  q.enq('some data')
-  q.enq('smore data... hehehe')
+// or...
+
+dq.connect({name: 'tasks'}, function (err, q) {
+
 })
 ```
 
 
-### Methods
 
 #### peak(start, count, [callback])
 
