@@ -23,17 +23,34 @@ alias: `create()`
   b. `port`, defaults to `6379`
   c. `host`, defaults '127.0.0.1'
   d. `password`
-2. `callback` optional, has signature `(err, q)`
+2. `callback`: optional, has signature `(err, q)`
 
-**example:**
+**Example:**
 
 ```js
+var dq = require('dq')
+
 var q = dq.connect({name: 'tasks'})
 
 // or...
 
 dq.connect({name: 'tasks'}, function (err, q) {
 
+})
+```
+
+### count(callback)
+
+- `callback`: has signature `(err, count)`
+
+**Example:**
+
+```js
+var dq = require('dq')
+
+var q = dq.connect({name: 'tasks'})
+q.count(function (err, count) {
+  console.log(count) // => 1356
 })
 ```
 
