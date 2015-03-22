@@ -20,13 +20,25 @@ describe('dq', function () {
 
   describe('- enq()', function () {
     describe('> when no priority', function () {
-      it('should enq in order', function (done) {
+      it('should enq', function (done) {
         var data = ['a', 'b', 'c']
         async.forEach(data, q.enq.bind(q), function (err) {
           F (err)
           q.redisClient.zrange(q.key, 0, 2, function (err, res) {
             F (err)
             assert.deepEqual(data, res)
+            done()
+          })
+        })
+      })
+
+      it('should enq (note, does not preserve insertion order)', function (done) {
+        var data = ['a', 'c', 'b']
+        async.forEach(data, q.enq.bind(q), function (err) {
+          F (err)
+          q.redisClient.zrange(q.key, 0, 2, function (err, res) {
+            F (err)
+            assert.deepEqual(res, ['a', 'b', 'c'])
             done()
           })
         })
