@@ -55,6 +55,38 @@ q.count(function (err, count) {
 ```
 
 
+### deq(callback)
+
+- `callback`: has signature `(err, val)`
+
+**Example:**
+
+```js
+var dq = require('dq')
+
+var q = dq.connect({name: 'tasks'})
+q.deq(function (err, val) {
+  console.log(val)
+})
+```
+
+
+### enq(value, [priority], callback)
+
+- `value`: (required) data to put in the queue, should be a `string`, any non-string will be type coerced
+- `priority`: (optional), defaults to `0`, you should choose between `0` and `1` using the result of Math.random(). Values
+between `-Infinity` and `Infinfity` will be accepted.
+- `callback`: has signature `(err, val)`
+
+**Example:**
+
+```js
+var dq = require('dq')
+
+var q = dq.connect({name: 'tasks'})
+q.enq('some data', Math.random(), function (err) { })
+```
+
 
 #### peak(start, count, [callback])
 
