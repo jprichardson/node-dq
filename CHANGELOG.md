@@ -1,3 +1,12 @@
+0.5.0 / 2015-03-19
+------------------
+- using JavaScript Standard Style
+- added `peak()` method
+- moved `dq-import` and `dq-export` to https://github.com/jprichardson/dq-cli
+- implemented `connect()` method, same as `create()` (may remove `create()`, not sure)
+- `connect()/create()` return an instance of `Queue` now
+- default `enq()` priority changed to `0` instead of `-Infinity`
+
 0.4.0 / 2013-10-13
 ------------------
 * aliased `destroy()` to `delete()`
@@ -20,7 +29,7 @@
 ------------------
 * Removed CoffeeScript
 * Added method 'createFromRedisClient'
-* Renamed `dq` to `dq-import`. 
+* Renamed `dq` to `dq-import`.
 * Created `dq-export`.
 
 0.1.1 /2012-04-11
