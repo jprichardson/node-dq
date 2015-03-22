@@ -3,7 +3,7 @@ var async = require('async')
 var dq = require('../')
 require('terst')
 
-/* global describe, EQ, F, it, T */
+/* global beforeEach, describe, F, it */
 /* eslint-disable no-spaced-func */
 
 var TESTQ_NAME = 'testq'
@@ -13,8 +13,8 @@ describe('dq', function () {
 
   beforeEach(function (done) {
     dq.delete({name: TESTQ_NAME}, function () {
-       q = dq.connect({name: TESTQ_NAME})
-       done()
+      q = dq.connect({name: TESTQ_NAME})
+      done()
     })
   })
 
@@ -48,7 +48,7 @@ describe('dq', function () {
     describe('> when priority', function () {
       it('should enq in order', function (done) {
         var data = [['a', 0.5], ['b', 0.1], ['c', 0.7], ['d', 0.3]]
-        async.forEach(data, function(i, cb) { q.enq.apply(q, [i[0], i[1], cb]) }, function (err) {
+        async.forEach(data, function (i, cb) { q.enq.apply(q, [i[0], i[1], cb]) }, function (err) {
           F (err)
           q.redisClient.zrange(q.key, 0, 3, function (err, res) {
             F (err)
