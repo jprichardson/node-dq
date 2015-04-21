@@ -1,3 +1,8 @@
+0.7.0 / 2015-04-21
+------------------
+- if `q.name` property changes, then so does `q.key`
+- expose `PREFIX`
+
 0.6.0 / 2015-03-22
 ------------------
 - added `Queue.list()`
