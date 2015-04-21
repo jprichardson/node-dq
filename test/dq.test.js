@@ -3,7 +3,7 @@ var async = require('async')
 var dq = require('../')
 require('terst')
 
-/* global beforeEach, describe, F, it, T */
+/* global beforeEach, describe, F, EQ, it, T */
 /* eslint-disable no-spaced-func */
 
 var TESTQ_NAME = 'testq'
@@ -25,7 +25,8 @@ describe('dq', function () {
     it('should create a Queue with input params', function (done) {
       dq.create({name: 'someQ'}, function (err, q) {
         F (err)
-        T (q.name === 'someQ')
+        EQ (q.name, 'someQ')
+        EQ (q.key, 'dq:someQ')
         done()
       })
     })
@@ -194,6 +195,26 @@ describe('dq', function () {
           done()
         })
       })
+    })
+  })
+
+  describe('> when name change', function () {
+    it('should change the key as well', function (done) {
+      var q = dq.create({name: 'blah'})
+      EQ (q.name, 'blah')
+      EQ (q.key, 'dq:blah')
+
+      q.name = 'hi'
+      EQ (q.name, 'hi')
+      EQ (q.key, 'dq:hi')
+
+      done()
+    })
+  })
+
+  describe('expose PREFIX', function () {
+    it('should have a value', function () {
+      EQ (dq.PREFIX, 'dq:')
     })
   })
 })

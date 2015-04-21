@@ -1,7 +1,7 @@
 var dq = require('../')
 require('terst')
 
-/* global describe, EQ, F, it, T */
+/* global describe, it, T */
 /* eslint-disable no-spaced-func */
 
 describe('dq', function () {
