@@ -1,3 +1,7 @@
+0.8.0 / 2015-06-19
+------------------
+- upgraded to `hiredis@0.4` from `0.2` (trying to improve IO.js compatibility)
+
 0.7.0 / 2015-04-21
 ------------------
 - if `q.name` property changes, then so does `q.key`
