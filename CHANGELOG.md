@@ -1,3 +1,7 @@
+0.9.0 / 2015-07-27
+------------------
+- added optional count parameter to `deq()`
+
 0.8.0 / 2015-06-19
 ------------------
 - upgraded to `hiredis@0.4` from `0.2` (trying to improve IO.js compatibility)
