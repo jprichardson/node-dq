@@ -107,9 +107,9 @@ dq.create({name: 'somedata'}, function (err, q) {
 ```
 
 
-## License
+License
+--------
 
 Licensed under MIT. See `LICENSE` for more details.
 
-Copyright (c) 2012-2013 JP Richardson
-
+Copyright (c) 2012-2015 [JP Richardson](https://github.com/jprichardson)
