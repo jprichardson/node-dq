@@ -55,9 +55,11 @@ q.count(function (err, count) {
 ```
 
 
-### deq(callback)
+### deq([count], callback)
 
 - `callback`: has signature `(err, val)`
+
+`val` is an `Array` if `count` was specified.
 
 **Example:**
 
