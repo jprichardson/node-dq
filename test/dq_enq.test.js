@@ -5,6 +5,7 @@ require('terst')
 
 /* global beforeEach, describe, F, it */
 /* eslint-disable no-spaced-func */
+// trinity: mocha
 
 var TESTQ_NAME = 'testq'
 
@@ -48,7 +49,7 @@ describe('dq', function () {
     describe('> when priority', function () {
       it('should enq in order', function (done) {
         var data = [['a', 0.5], ['b', 0.1], ['c', 0.7], ['d', 0.3]]
-        async.forEach(data, function (i, cb) { q.enq.apply(q, [i[0], i[1], cb]) }, function (err) {
+        async.forEach(data, function (i, cb) { q.enq(i[0], i[1], cb) }, function (err) {
           F (err)
           q.redisClient.zrange(q.key, 0, 3, function (err, res) {
             F (err)
