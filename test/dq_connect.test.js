@@ -4,6 +4,7 @@ require('terst')
 
 /* global describe, EQ, F, it, T */
 /* eslint-disable no-spaced-func */
+// trinity: mocha
 
 var TESTQ_NAME = 'testq'
 

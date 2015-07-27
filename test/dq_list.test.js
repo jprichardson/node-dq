@@ -3,6 +3,7 @@ require('terst')
 
 /* global describe, it, T */
 /* eslint-disable no-spaced-func */
+// trinity: mocha
 
 describe('dq', function () {
   describe('+ list()', function () {
